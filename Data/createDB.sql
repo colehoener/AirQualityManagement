@@ -21,4 +21,3 @@ CREATE TABLE aqms.attributes (
     unit varchar(5),
     description varchar(100)
 );
-
