@@ -1,23 +1,24 @@
-DROP TABLE IF EXISTS sensorData;
-DROP TABLE IF EXISTS sensors;
-DROP TABLE IF EXISTS attributes;
+/*Must create schema named 'aqms'*/
+DROP TABLE IF EXISTS aqms.sensorData;
+DROP TABLE IF EXISTS aqms.sensors;
+DROP TABLE IF EXISTS aqms.attributes;
 
-CREATE TABLE sensorData (
+CREATE TABLE aqms.sensorData (
     timeMark TIMESTAMP,
-    sensorID INT,
+    sensorID varchar(10),
     attributeID varchar(10),
-    sensorValue INT
+    sensorValue DECIMAL
 );
 
-CREATE TABLE sensors (
-    sensorID INT,
-    latitude FLOAT,
-    longitude FLOAT,
-    description varchar(100)
+CREATE TABLE aqms.sensors (
+    sensorID varchar(10),
+    latitude DECIMAL,
+    longitude DECIMAL
 );
 
-CREATE TABLE attributes (
+CREATE TABLE aqms.attributes (
     attributeID varchar(10),
     unit varchar(5),
     description varchar(100)
 );
+
