@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  merchant_model.getMean()
+  merchant_model.getMean(req.params)
   .then(response => {
     res.status(200).send(response);
   })
@@ -34,8 +34,8 @@ app.get('/', (req, res) => {
   })
 })
 
-app.post('/merchants', (req, res) => {
-  merchant_model.createMerchant(req.body)
+app.get('/', (req, res) => {
+  merchant_model.getMedian(req.params)
   .then(response => {
     res.status(200).send(response);
   })
@@ -44,8 +44,8 @@ app.post('/merchants', (req, res) => {
   })
 })
 
-app.delete('/merchants/:id', (req, res) => {
-  merchant_model.deleteMerchant(req.params.id)
+app.get('/', (req, res) => {
+  merchant_model.getSensorData(req.params)
   .then(response => {
     res.status(200).send(response);
   })
@@ -53,6 +53,7 @@ app.delete('/merchants/:id', (req, res) => {
     res.status(500).send(error);
   })
 })
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
