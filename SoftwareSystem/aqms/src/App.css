@@ -14,12 +14,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(139deg, rgba(116,113,113,1) 0%, rgba(26,89,148,1) 100%);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -35,4 +36,60 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.gridContainer{
+  height:0;
+  width:48%;
+  padding-bottom:48%;
+  background-color:rgb(243, 242, 242);
+  border-radius: 3%;
+  -webkit-box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16); 
+  box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16);  
+}
+
+.nodeInfoContainer{
+  height:0;
+  width:96%;
+  padding-bottom:29.5%;
+  background-color:red;
+  -webkit-box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16); 
+  box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16);
+}
+
+.rightSideContainer{
+  width: 50%;
+  min-width: 450px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#gridLayout {
+  --c: 100;
+  --cx: 50;
+  --cy: 50;
+  --dsize: 10;
+  --dcolor: #369;
+  --size: 100%;
+  position: relative;
+  width: var(--size);
+  height: 0;
+  padding-top: var(--size);
+  box-sizing: border-box;
+  aspect-ratio: 1/1;
+  background-image:
+    linear-gradient(#0000 calc(var(--cy) * 100% / var(--c) - 1px), #0008 0 calc(var(--cy) * 100% / var(--c) + 1px), transparent 0),
+    linear-gradient(to right, #0000 calc(var(--cx) * 100% / var(--c) - 1px), #0008 0 calc(var(--cx) * 100% / var(--c) + 1px), transparent 0),
+    repeating-linear-gradient(#0002 0 0.5px, #0000 0 calc(100% / var(--c) - 0.5px), #0002 0 calc(100% / var(--c))),
+    repeating-linear-gradient(to right, #0002 0 0.5px, #0000 0 calc(100% / var(--c) - 0.5px), #0002 0 calc(100% / var(--c)));
+  border-radius: 3%;
+}
+
+.gridLayout.no-overflow {
+  overflow: hidden;
 }

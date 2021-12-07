@@ -1,22 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Grid from './components/Grid.jsx'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* Grid of nodes */}
+        <div className="gridContainer">
+          <div>
+            <Grid></Grid>
+          </div>
+        </div>
+        <div className="rightSideContainer">
+          {/* Info for one node */}
+          <div className="nodeContainer">
+            <div>
+              Node Info
+            </div>
+          </div>
+          {/* Aggregated info for all nodes */}
+          <div className="nodeInfoContainer">
+            <div>
+              Content goes here
+            </div>
+          </div>
+          {/* Slider */}
+          <div className="nodeContainer">
+            <div>
+              Slider
+            </div>
+          </div>
+        </div>
       </header>
     </div>
   );
