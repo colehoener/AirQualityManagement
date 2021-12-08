@@ -37,6 +37,9 @@ class Node extends React.Component {
                         <div>
                         {'PM10: ' + this.props.PM10start}
                         </div>
+                        <div>
+                        {'NO2: ' + this.props.NO2start}
+                        </div>
                     </div>
                     <div className="nodeTimedInfoFlexContainer">
                     <div style={{fontWeight: 'bold'}}>
@@ -50,6 +53,9 @@ class Node extends React.Component {
                         </div>
                         <div>
                         {'PM10: ' + this.props.PM10end}
+                        </div>
+                        <div>
+                        {'NO2: ' + this.props.NO2end}
                         </div>
                     </div>
                 </div>

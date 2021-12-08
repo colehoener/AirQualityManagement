@@ -59,15 +59,21 @@ export function Handle({
   )
 }
 
+const defaultValues = [350, 1080]
+
 class SliderComp extends Component {
   constructor() {
     super();
 
     this.state = {
-
+      values: defaultValues.slice()
     };
   }
 
+  onChange = values => {
+    this.setState({ values })
+    this.props.parentHandleSliderUpdate(values);
+  }
 
   render() {
 
@@ -92,9 +98,10 @@ class SliderComp extends Component {
       <Slider
         rootStyle={sliderStyle /* inline styles for the outer div. Can also use className prop. */}
         domain={[0, 1440]}
-        values={[360, 1080]}
+        values={this.state.values}
         mode={2}
         step={1}
+        onChange={this.onChange}
       >
 
         <div style={railStyle /* Add a rail as a child.  Later we'll make it interactive. */} />

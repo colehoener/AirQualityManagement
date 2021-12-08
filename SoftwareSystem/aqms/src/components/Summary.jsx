@@ -24,10 +24,13 @@ class Summary extends React.Component {
                         {'SO2: ' + this.props.SO2mean}
                         </div>
                         <div>
-                        {'O3: ' + this.props.O3meean}
+                        {'O3: ' + this.props.O3mean}
                         </div>
                         <div>
                         {'PM10: ' + this.props.PM10mean}
+                        </div>
+                        <div>
+                        {'NO2: ' + this.props.NO2mean}
                         </div>
                     </div>
                     <div className="nodeTimedInfoFlexContainer">
@@ -42,6 +45,9 @@ class Summary extends React.Component {
                         </div>
                         <div>
                         {'PM10: ' + this.props.PM10med}
+                        </div>
+                        <div>
+                        {'NO2: ' + this.props.NO2med}
                         </div>
                     </div>
                 </div>
