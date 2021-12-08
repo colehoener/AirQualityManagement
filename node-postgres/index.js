@@ -2,19 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3001
 
-app.get('/', (req, res) => {
-  res.status(200).send('Hello World!');
-})
-
-app.listen(port, () => {
-  console.log(`App running on port ${port}.`)
-})
-
-const express = require('express')
-const app = express()
-const port = 3001
-
-const merchant_model = require('./merchant_model')
+const merchant_model = require('./merchant_model.js')
 
 app.use(express.json())
 app.use(function (req, res, next) {

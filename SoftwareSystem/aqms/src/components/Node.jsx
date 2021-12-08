@@ -7,7 +7,6 @@ class Node extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.gridSize)
   }
 
   render() {
@@ -18,7 +17,8 @@ class Node extends React.Component {
       height: '2%',
       background: color,
       position: 'absolute',
-      borderRadius: '50%'
+      borderRadius: '50%',
+      boxShadow: '2px 5px 5px 2px rgba(0,0,0,0.08)'
     });
 
     function getColor(){
