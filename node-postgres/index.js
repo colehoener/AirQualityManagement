@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 //Example of passing start & end
 // -> http://server/action?id=a&id=b
-app.get('/getMean/:test', (req, res) => {
+app.get('/getMean/:start/:end', (req, res) => {
   merchant_model.getMean(req.params)
   .then(response => {
     res.status(200).send(response);
@@ -28,7 +28,7 @@ app.get('/getMean/:test', (req, res) => {
   })
 })
 
-app.get('/getMedian', (req, res) => {
+app.get('/getMedian/:start/:end', (req, res) => {
   merchant_model.getMedian(req.params)
   .then(response => {
     res.status(200).send(response);
@@ -38,7 +38,7 @@ app.get('/getMedian', (req, res) => {
   })
 })
 
-app.get('/getSensorData', (req, res) => {
+app.get('/getSensorData/:start/:end/:sensorID', (req, res) => {
   merchant_model.getSensorData(req.params)
   .then(response => {
     res.status(200).send(response);
