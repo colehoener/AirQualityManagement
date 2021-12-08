@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background: linear-gradient(139deg, rgba(116,113,113,1) 0%, rgba(26,89,148,1) 100%);
+  background: linear-gradient(139deg, rgba(116,113,113,1) 0%, rgb(4, 98, 187) 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -48,13 +48,10 @@
   box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16);  
 }
 
-.nodeInfoContainer{
+.sliderContainer{
   height:0;
   width:96%;
-  padding-bottom:29.5%;
-  background-color:red;
-  -webkit-box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16); 
-  box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16);
+  padding-bottom:15%; 
 }
 
 .rightSideContainer{
@@ -92,4 +89,50 @@
 
 .gridLayout.no-overflow {
   overflow: hidden;
+}
+
+.nodeInfoContainer{
+  height:0;
+  width:96%;
+  padding-bottom:29.5%;
+  background-color:#F4F4F4;
+  border-radius: 5%;
+  -webkit-box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16); 
+  box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16);
+  color: 'black';
+}
+
+.nodeTitle{ 
+  font-Family: 'Avenir'; 
+  font-size: 30; 
+  font-weight: bold;
+  margin-top: 10px; 
+  text-align: left;
+  margin-left: 15px;
+  width: 100%;
+  color: black;
+}
+
+.nodeInfoFlexContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.nodeTimedInfoFlexContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 50%;
+  height: 100%;
+  margin-left: 15px;
+  margin-top: 10px;
+  text-align: left;
+  color: black;
+  font-Family: 'Avenir'; 
+  font-size: 20px; 
 }
