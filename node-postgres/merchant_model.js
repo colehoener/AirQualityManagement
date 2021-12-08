@@ -17,9 +17,10 @@ const getTotalMean = () => {
     })
   }
 
-const getMean = (start,end) => {
+const getMean = (start,end,attributeID) => {
     return new Promise(function(resolve, reject) {
-      pool.query("SELECT AVG(sensorvalue) AS mean FROM aqms.sensordata WHERE timemark BETWEEN CAST($1 AS DATE) AND CAST($2 AS DATE)",[start, end], (error, results) => {
+      pool.query("SELECT AVG(sensorvalue) AS mean FROM aqms.sensordata WHERE timemark > CAST($1 AS DATE) AND timemark < CAST($2 AS DATE) AND attributeid = $3",
+                [start, end, attributeID], (error, results) => {
         if (error) {
           reject(error)
         }
@@ -28,11 +29,22 @@ const getMean = (start,end) => {
     })
   }
 
-const getMedian = () => {
+  const getMeanSensor = (start,end,attributeID,sensorID) => {
     return new Promise(function(resolve, reject) {
-      const start = parse(request.params.start)
-      const end = parse(request.params.end)
-      pool.query("SELECT sensorvalue AS mean FROM aqms.sensordata WHERE timemark BETWEEN CAST('$1' AS DATE) AND CAST('$2' AS DATE)",[start, end], (error, results) => {
+      pool.query("SELECT AVG(sensorvalue) AS mean FROM aqms.sensordata WHERE timemark > CAST($1 AS DATE) AND timemark < CAST($2 AS DATE) AND attributeid = $3 AND sensorid = $4",
+                [start,end,attributeID,sensorID], (error, results) => {
+        if (error) {
+          reject(error)
+        }
+        resolve(results.rows);
+      })
+    })
+  }
+
+const getMedian = (start, end) => {
+    return new Promise(function(resolve, reject) {
+      pool.query("SELECT sensorvalue AS mean FROM aqms.sensordata WHERE timemark BETWEEN CAST('$1' AS DATE) AND CAST('$2' AS DATE)",
+      [start, end], (error, results) => {
         if (error) {
           reject(error)
         }
@@ -69,6 +81,7 @@ const getSensorLocation = () => {
 module.exports = {
   getTotalMean,
   getMean,
+  getMeanSensor,
   getMedian,
   getSensorData,
   getSensorLocation,
