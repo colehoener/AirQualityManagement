@@ -8,6 +8,7 @@ const pool = new Pool({
 
 // function getMean(start,end)
 const getMean = (params) => {
+  console.log(params)
     return new Promise(function(resolve, reject) {
       const start = parseInt(request.params.start)
       const end = parseInt(request.params.end)
@@ -46,3 +47,9 @@ const getSensorData = (params) => {
       })
     })
   }
+
+module.exports = {
+  getMean,
+  getMedian,
+  getSensorData,
+}

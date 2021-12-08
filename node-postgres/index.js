@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3001
 
-const merchant_model = require('./merchant_model.js')
+const merchant_model = require('./merchant_model')
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -13,6 +13,12 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
+  res.status(200).send('Hello World!');
+})
+
+//Example of passing start & end
+// -> http://server/action?id=a&id=b
+app.get('/getMean/:test', (req, res) => {
   merchant_model.getMean(req.params)
   .then(response => {
     res.status(200).send(response);
@@ -22,7 +28,7 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/', (req, res) => {
+app.get('/getMedian', (req, res) => {
   merchant_model.getMedian(req.params)
   .then(response => {
     res.status(200).send(response);
@@ -32,7 +38,7 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/', (req, res) => {
+app.get('/getSensorData', (req, res) => {
   merchant_model.getSensorData(req.params)
   .then(response => {
     res.status(200).send(response);

@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
 
     getMerchant() {
         try {
-            fetch('http://localhost:3001')
+            fetch('http://localhost:3001/getMean/test=' + 33)
                 .then(response => {
                     return response.text();
                 })
