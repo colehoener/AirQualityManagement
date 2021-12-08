@@ -16,12 +16,24 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello World!');
 })
 
+
 //Example of passing start & end
 // -> http://server/action?id=a&id=b
+app.get('/getTotalMean', (req, res) => {
+  merchant_model.getTotalMean()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
 app.get('/getMean/:start/:end', (req, res) => {
   merchant_model.getMean(req.params)
   .then(response => {
     res.status(200).send(response);
+    console.log(res)
   })
   .catch(error => {
     res.status(500).send(error);
@@ -31,7 +43,8 @@ app.get('/getMean/:start/:end', (req, res) => {
 app.get('/getMedian/:start/:end', (req, res) => {
   merchant_model.getMedian(req.params)
   .then(response => {
-    res.status(200).send(response);
+    res.status(200).send(res);
+    console.log(response)
   })
   .catch(error => {
     res.status(500).send(error);
@@ -48,7 +61,7 @@ app.get('/getSensorData/:start/:end/:sensorID', (req, res) => {
   })
 })
 
-app.get('/', (req, res) => {
+app.get('/getSensorLocation', (req, res) => {
   merchant_model.getSensorLocation()
   .then(response => {
     res.status(200).send(response);
