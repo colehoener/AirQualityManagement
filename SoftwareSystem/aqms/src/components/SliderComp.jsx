@@ -7,7 +7,7 @@ function Track({ source, target, getTrackProps }) {
       style={{
         position: 'absolute',
         height: 40,
-        zIndex: 1,
+        zIndex: 0,
         marginTop: 35,
         backgroundColor: '#F4F4F4',
         borderRadius: 5,
@@ -38,7 +38,7 @@ export function Handle({
         position: 'absolute',
         marginLeft: -15,
         marginTop: 35,
-        zIndex: 2,
+        zIndex: 1,
         width: 40,
         height: 40,
         border: 0,

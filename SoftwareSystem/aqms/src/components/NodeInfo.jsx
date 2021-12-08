@@ -3,7 +3,9 @@ import React, { Component } from "react";
 class Node extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { gridSize: props.gridSize };
+        this.state = {
+            gridSize: props.gridSize
+        };
     }
 
     componentDidMount() {
@@ -20,42 +22,46 @@ class Node extends React.Component {
 
         return (
             <div className="nodeInfoContainer">
-                <div className="nodeTitle">
+                <div key={this.props.sensorID} className="nodeTitle">
                     {'Sensor ' + this.props.sensorID}
                 </div>
                 <div className="nodeInfoFlexContainer">
                     <div className="nodeTimedInfoFlexContainer">
-                        <div style={{fontWeight: 'bold'}}>
-                        {convertToTime(this.props.startTime)}
+                        <div style={{ fontWeight: 'bold' }}>
+                            <div key={this.props.startTime} className="pulseAni">
+                                {convertToTime(this.props.startTime)}
+                            </div>
                         </div>
                         <div>
-                        {'SO2: ' + this.props.SO2start}
+                            {'SO2: ' + this.props.SO2start}
                         </div>
                         <div>
-                        {'O3: ' + this.props.O3start}
+                            {'O3: ' + this.props.O3start}
                         </div>
                         <div>
-                        {'PM10: ' + this.props.PM10start}
+                            {'PM10: ' + this.props.PM10start}
                         </div>
                         <div>
-                        {'NO2: ' + this.props.NO2start}
+                            {'NO2: ' + this.props.NO2start}
                         </div>
                     </div>
                     <div className="nodeTimedInfoFlexContainer">
-                    <div style={{fontWeight: 'bold'}}>
-                        {convertToTime(this.props.endTime)}
+                        <div style={{ fontWeight: 'bold' }}>
+                            <div key={this.props.endTime} className="pulseAni">
+                                {convertToTime(this.props.endTime)}
+                            </div>
                         </div>
                         <div>
-                        {'SO2: ' + this.props.SO2end}
+                            {'SO2: ' + this.props.SO2end}
                         </div>
                         <div>
-                        {'O3: ' + this.props.O3end}
+                            {'O3: ' + this.props.O3end}
                         </div>
                         <div>
-                        {'PM10: ' + this.props.PM10end}
+                            {'PM10: ' + this.props.PM10end}
                         </div>
                         <div>
-                        {'NO2: ' + this.props.NO2end}
+                            {'NO2: ' + this.props.NO2end}
                         </div>
                     </div>
                 </div>

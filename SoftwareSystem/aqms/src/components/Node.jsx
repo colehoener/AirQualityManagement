@@ -29,7 +29,23 @@ class Node extends React.Component {
     });
 
     function getColor() {
-      return "lightGreen"
+      /*if(this.props.SO2 > 125){
+        return "red"
+      }
+
+      if(this.props.O3 > 120){
+        return "red"
+      }
+
+      if(this.props.PM10 > 50){
+        return "red"
+      }
+
+      if(this.props.PM10 > 200){
+        return "red"
+      }
+*/
+      return "#24bf39"
     }
 
     return (

@@ -22,24 +22,24 @@ class Dashboard extends React.Component {
         this.changeTimeSelection = this.changeTimeSelection.bind(this);
     }
 
-    handleSliderUpdate = (childData) =>{
-        this.setState({timeValues: childData})
+    handleSliderUpdate = (childData) => {
+        this.setState({ timeValues: childData })
         console.log(this.state.timeValues)
     }
 
-    handleSelectedNode = (childData) =>{
-        this.setState({selectedNode: childData})
-        console.log("Selected node in dashboard is: "+ this.state.selectedNode)
+    handleSelectedNode = (childData) => {
+        this.setState({ selectedNode: childData })
+        console.log("Selected node in dashboard is: " + this.state.selectedNode)
     }
 
     componentDidMount() {
-    
+
         //console.log(this.getMerchant())
     }
 
     getMerchant() {
         try {
-            fetch('http://localhost:3001/getMean/')
+            fetch('http://localhost:3001/getMean/start')
                 .then(response => {
                     return response.text();
                 })
@@ -68,7 +68,10 @@ class Dashboard extends React.Component {
                 {/* Grid of nodes */}
                 <div className="gridContainer">
                     <div>
-                        <Grid nodes={["sensor1"]} parentHandleSelectedNode={this.handleSelectedNode}></Grid>
+                        <Grid
+                            nodes={["sensor1"]}
+                            parentHandleSelectedNode={this.handleSelectedNode}
+                            ></Grid>
                     </div>
                 </div>
                 <div className="rightSideContainer">
@@ -76,8 +79,8 @@ class Dashboard extends React.Component {
 
                     <NodeInfo
                         sensorID={this.state.selectedNode}
-                        startTime={360}
-                        endTime={1350}
+                        startTime={this.state.timeValues[0]}
+                        endTime={this.state.timeValues[1]}
                         SO2start={1.4}
                         SO2end={1.2}
                         O3start={0.3}
@@ -98,13 +101,15 @@ class Dashboard extends React.Component {
                             O3med={1.0}
                             PM10med={0.6}
                             NO2med={0.1}
-                            ></Summary>
+                        ></Summary>
                     </div>
                     {/* Slider */}
                     <div className="sliderContainer">
-                        <SliderComp parentHandleSliderUpdate = {this.handleSliderUpdate} isDate={this.state.isDate}></SliderComp>
+                        <SliderComp parentHandleSliderUpdate={this.handleSliderUpdate} isDate={this.state.isDate}></SliderComp>
                     </div>
+                    <div>
                     <DatePicker selected={this.state.startDate} onChange={(date) => this.setState({ startDate: date })} />
+                    </div>
                 </div>
             </>
         )

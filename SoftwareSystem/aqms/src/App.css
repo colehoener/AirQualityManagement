@@ -14,7 +14,9 @@
 }
 
 .App-header {
-  background: linear-gradient(139deg, rgba(116,113,113,1) 0%, rgb(4, 98, 187) 100%);
+  background: linear-gradient(135deg, hsla(183, 62%, 45%, 1) 0%, hsla(41, 96%, 58%, 1) 100%);
+
+background: -moz-linear-gradient(135deg, hsla(183, 62%, 45%, 1) 0%, hsla(41, 96%, 58%, 1) 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -92,9 +94,8 @@
 }
 
 .nodeInfoContainer{
-  height:0;
+  min-height: 212px;
   width:96%;
-  padding-bottom:29.5%;
   background-color:#F4F4F4;
   border-radius: 5%;
   -webkit-box-shadow: inset 0px 6px 10px 5px rgba(0,0,0,0.16); 
@@ -111,6 +112,7 @@
   margin-left: 15px;
   width: 100%;
   color: black;
+  animation: pulse 0.5s ;
 }
 
 .nodeInfoFlexContainer{
@@ -120,6 +122,7 @@
   justify-content: space-between;
   flex-wrap: nowrap;
   width: 100%;
+  
 }
 
 .nodeTimedInfoFlexContainer{
@@ -135,4 +138,26 @@
   color: black;
   font-Family: 'Avenir'; 
   font-size: 20px; 
+  animation: pulse 0.5s ;
+}
+
+.pulseAni{
+  animation: pulse 0.5s ;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+		color: #000000;
+	}
+
+	70% {
+		transform: scale(0.95);
+		color: #3d3d3d;
+	}
+
+	100% {
+		transform: scale(1);
+		color: #000000;
+	}
 }
