@@ -3,6 +3,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   port: 5432,
+  password: 'hoener10221',
   database: 'aqms',
 });
 
@@ -17,14 +18,19 @@ const getTotalMean = () => {
     })
   }
 
-const getMean = () => {
+const getMean = (request, response) => {
     return new Promise(function(resolve, reject) {
-      const start = parseInt(request.params.start)
-      const end = parseInt(request.params.end)
+
+      const start = request.params.start
+      const end = request.params.
+      console.log(start)
       pool.query("SELECT AVG(sensorvalue) AS mean FROM aqms.sensordata WHERE timemark BETWEEN CAST('$1' AS DATE) AND CAST('$2' AS DATE)",[start, end], (error, results) => {
         if (error) {
+          console.log("Error")
           reject(error)
+
         }
+        console.log("Sucess")
         resolve(results.rows);
       })
     })

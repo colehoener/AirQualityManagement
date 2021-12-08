@@ -30,7 +30,7 @@ app.get('/getTotalMean', (req, res) => {
 })
 
 app.get('/getMean/:start/:end', (req, res) => {
-  merchant_model.getMean(req.params)
+  merchant_model.getMean(req)
   .then(response => {
     res.status(200).send(response);
     console.log(res)
