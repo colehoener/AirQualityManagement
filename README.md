@@ -18,5 +18,4 @@ npm start
 5. Head to http://localhost:3000/
 
 ## Contributors
-Cole Hoener
-Lukas Schirren
+Cole Hoener & Lukas Schirren
