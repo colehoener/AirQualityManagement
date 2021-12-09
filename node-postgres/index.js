@@ -33,7 +33,6 @@ app.get('/getMean', (req, res) => {
   merchant_model.getMean(req.query.start, req.query.end, req.query.attributeID)
   .then(response => {
     res.status(200).send(response);
-    console.log(res)
   })
   .catch(error => {
     res.status(500).send(error);
@@ -44,7 +43,6 @@ app.get('/getMeanSensor', (req, res) => {
   merchant_model.getMeanSensor(req.query.start, req.query.end, req.query.attributeID, req.query.sensorID)
   .then(response => {
     res.status(200).send(response);
-    console.log(res)
   })
   .catch(error => {
     res.status(500).send(error);

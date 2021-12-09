@@ -20,11 +20,9 @@ function Track({ source, target, getTrackProps }) {
   )
 }
 
-function convertToTime(value){
-  let hours = (value / 60).toFixed(0)
-  let minutes = ((value % 60)).toFixed(0)
-
-  return (("0" + hours).slice(-2) + ':' + ("0" + minutes).slice(-2))
+function convertToDate(day) {
+  var date = new Date(2017, 0); // initialize a date in `year-01-01`
+  return (((new Date(date.setDate(day))).toDateString()).slice(4)).replace(/\s+/g, '-'); // add the number of days 
 }
 
 export function Handle({
@@ -36,7 +34,7 @@ export function Handle({
       style={{
         left: `${percent}%`,
         position: 'absolute',
-        marginLeft: -15,
+        marginLeft: -20,
         marginTop: 35,
         zIndex: 1,
         width: 40,
@@ -52,14 +50,14 @@ export function Handle({
       }}
       {...getHandleProps(id)}
     >
-      <div style={{ fontFamily: 'Avenir', fontSize: 25, marginTop: -35 }}>
-        {convertToTime(value)}
+      <div style={{ fontFamily: 'Avenir', fontSize: 15, marginTop: -65, padding: -20 }}>
+        {convertToDate(value)}
       </div>
     </div>
   )
 }
 
-const defaultValues = [350, 1080]
+const defaultValues = [50, 315]
 
 class SliderComp extends Component {
   constructor() {
@@ -97,7 +95,7 @@ class SliderComp extends Component {
     return (
       <Slider
         rootStyle={sliderStyle /* inline styles for the outer div. Can also use className prop. */}
-        domain={[0, 1440]}
+        domain={[0, 365]}
         values={this.state.values}
         mode={2}
         step={1}

@@ -3,7 +3,9 @@ import React, { Component } from "react";
 class Summary extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { gridSize: props.gridSize };
+        this.state = { 
+
+        };
     }
 
     componentDidMount() {
@@ -20,36 +22,19 @@ class Summary extends React.Component {
                         <div style={{fontWeight: 'bold'}}>
                         {'Mean'}
                         </div>
-                        <div>
-                        {'SO2: ' + this.props.SO2mean}
+                        <div key={this.props.SO2mean}>
+                        {'SO2: ' +  parseFloat(((this.props.SO2mean)[0].mean)).toFixed(5)}
                         </div>
-                        <div>
-                        {'O3: ' + this.props.O3mean}
+                        <div key={this.props.O3mean}>
+                        {'O3: ' +  parseFloat(((this.props.O3mean)[0].mean)).toFixed(5)}
                         </div>
-                        <div>
-                        {'PM10: ' + this.props.PM10mean}
+                        <div key={this.props.PM10mean}>
+                        {'PM10: ' +  parseFloat(((this.props.PM10mean)[0].mean)).toFixed(5)}
                         </div>
-                        <div>
-                        {'NO2: ' + this.props.NO2mean}
+                        <div key={this.props.NO2mean}>
+                        {'NO2: ' + parseFloat(( (this.props.NO2mean)[0].mean)).toFixed(5)}
                         </div>
-                    </div>
-                    <div className="nodeTimedInfoFlexContainer">
-                    <div style={{fontWeight: 'bold'}}>
-                        {'Median'}
-                        </div>
-                        <div>
-                        {'SO2: ' + this.props.SO2med}
-                        </div>
-                        <div>
-                        {'O3: ' + this.props.O3med}
-                        </div>
-                        <div>
-                        {'PM10: ' + this.props.PM10med}
-                        </div>
-                        <div>
-                        {'NO2: ' + this.props.NO2med}
-                        </div>
-                    </div>
+                    </div>                  
                 </div>
             </>
         )

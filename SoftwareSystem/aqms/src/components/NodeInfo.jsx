@@ -13,55 +13,36 @@ class Node extends React.Component {
 
     render() {
 
-        function convertToTime(value) {
-            let hours = (value / 60).toFixed(0)
-            let minutes = ((value % 60)).toFixed(0)
-
-            return (("0" + hours).slice(-2) + ':' + ("0" + minutes).slice(-2))
+        function convertToDate(day) {
+            var date = new Date(2017, 0); // initialize a date in `year-01-01`
+            return (((new Date(date.setDate(day))).toDateString()).slice(4)).replace(/\s+/g, '-'); // add the number of days 
         }
 
         return (
             <div className="nodeInfoContainer">
                 <div key={this.props.sensorID} className="nodeTitle">
-                    {'Sensor ' + this.props.sensorID}
+                    {this.props.sensorID}
                 </div>
                 <div className="nodeInfoFlexContainer">
                     <div className="nodeTimedInfoFlexContainer">
                         <div style={{ fontWeight: 'bold' }}>
                             <div key={this.props.startTime} className="pulseAni">
-                                {convertToTime(this.props.startTime)}
+                                <div key={this.props.endTime} className="pulseAni">
+                                    {"Average from " + convertToDate(this.props.startTime) + " to " + convertToDate(this.props.endTime)}
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            {'SO2: ' + this.props.SO2start}
+                        <div key={this.props.SO2start}>
+                            {'SO2: ' + parseFloat(((this.props.SO2start)[0].mean)).toFixed(5)}
                         </div>
                         <div>
-                            {'O3: ' + this.props.O3start}
+                            {'O3: ' + parseFloat(((this.props.O3start)[0].mean)).toFixed(5)}
                         </div>
                         <div>
-                            {'PM10: ' + this.props.PM10start}
+                            {'PM10: ' + parseFloat(((this.props.PM10start)[0].mean)).toFixed(5)}
                         </div>
                         <div>
-                            {'NO2: ' + this.props.NO2start}
-                        </div>
-                    </div>
-                    <div className="nodeTimedInfoFlexContainer">
-                        <div style={{ fontWeight: 'bold' }}>
-                            <div key={this.props.endTime} className="pulseAni">
-                                {convertToTime(this.props.endTime)}
-                            </div>
-                        </div>
-                        <div>
-                            {'SO2: ' + this.props.SO2end}
-                        </div>
-                        <div>
-                            {'O3: ' + this.props.O3end}
-                        </div>
-                        <div>
-                            {'PM10: ' + this.props.PM10end}
-                        </div>
-                        <div>
-                            {'NO2: ' + this.props.NO2end}
+                            {'NO2: ' + parseFloat(((this.props.NO2start)[0].mean)).toFixed(5)}
                         </div>
                     </div>
                 </div>
